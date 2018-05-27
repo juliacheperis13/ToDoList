@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+	
+	<title> JS </title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/all.css" />
+
+   
+   
+
+    
+</head>
+    <body>
+         <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+</ul>
+        <div class='wrapper'>
+            <h1> my to-do list </h1>
+
+        <ul id='todolist'>
+           <!--  <li> <span> First task </span> <i class = 'far fa-save none'></i><i class="fas fa-pencil-alt"></i><i class="far fa-trash-alt"></i></li> -->
+        </ul>
+
+<!-- <img src='./images/bc-1.jpg'> -->
+
+        <form>
+            <input type="text" name="todoname" placeholder="Type your task" class='type'>
+            <input type="submit" value="Submit" class='submit'>
+        </form>
+
+ </div>
+
+
+
+<!-- 
+    <script>
+        // handle input value
+        // handle submit button
+        // create list item
+        // *add checked state 
+        // edit list item
+        // delete list item
+
+        
+        //edit list item  <i class="fas fa-edit"></i>
+        //delete list item <i class="fas fa-trash-alt"></i>
+
+        var list = document.getElementById('todolist');
+        var input = document.getElementsByTagName('input')[0];
+        var button = document.getElementsByTagName('input')[1];
+
+        button.addEventListener('click', function(event){
+            saveToDo(event);
+        });
+
+        function saveToDo(e){
+            e.preventDefault();
+            var newtask = input.value;      
+            var newli = document.createElement('li');
+            var textT = document.createElement('span');
+            textT.innerText = newtask;
+            newli.appendChild(textT);
+            newli.appendChild(addBtn('i', ['fas', 'fa-pencil-alt']));
+            newli.appendChild(addBtn('i', ['far', 'fa-trash-alt']));
+             newli.appendChild(addBtn('i', ['far', 'fa-save']));
+            list.appendChild(newli);
+
+            input.value = '';
+        }
+
+
+
+        function addBtn(tag, classlist){
+            var elem = document.createElement(tag);
+            for(var i = 0; i < classlist.length; i++){
+                elem.classList.add(classlist[i]);
+            }
+            return elem;
+        }
+
+        list.addEventListener('click', function(event){
+            if(event.target.tagName === 'LI'){
+                event.target.classList.toggle('checked');
+            }
+            else if(event.target.tagName === 'I' && event.target.classList.contains('fa-trash-alt')){
+                list.removeChild(event.target.parentNode);
+            }
+            else if(event.target.tagName === 'I' && event.target.classList.contains('fa-pencil-alt')){
+                editToDo(event.target.parentNode);
+            }
+        });
+
+        list.addEventListener('keyup', function(event){
+            if (event.keyCode == '13') {
+                    
+                      finishEdit(event.target,event.target.parentNode);
+
+                }
+            });
+
+        function editToDo(todo){
+            var span = todo.getElementsByTagName('span')[0];
+            var currentVal = span.innerText;
+
+             span.remove();
+             var inputE = document.createElement('input');
+             // var newli = document.createElement('li');
+             inputE.value = currentVal;
+             inputE.classList.add('text');
+              // list.appendChild(newli);
+             todo.appendChild(inputE);
+             // todo.appendChild(addBtn('i', ['far', 'fa-save']));
+
+            
+ }
+
+
+  
+        function finishEdit(inp,el){
+            var newtask = inp.value;     
+            var btnsave = document.getElementsByClassName('fa-save')[0];
+            var textT = document.createElement('span'); 
+            console.log(btnsave);
+
+            textT.innerText = newtask;
+            
+            inp.remove(); 
+
+            btnsave.remove(); 
+            el.appendChild(textT);  
+            // el.appendChild(addBtn('i', ['fas', 'fa-pencil-alt']));
+            // el.appendChild(addBtn('i', ['far', 'fa-trash-alt']));
+            // list.appendChild(newli);
+        }
+
+
+
+    </script>
+
+ -->
+
+   <script>
+        // handle input value
+        // handle submit button
+        // create list item
+        // *add checked state 
+        // edit list item
+        // delete list item
+
+        
+        //edit list item  <i class="fas fa-edit"></i>
+        //delete list item <i class="fas fa-trash-alt"></i>
+
+        var list = document.getElementById('todolist');
+        var input = document.getElementsByTagName('input')[0];
+        var button = document.getElementsByTagName('input')[1];
+
+        button.addEventListener('click', function(event){
+            saveToDo(event);
+        });
+
+        function saveToDo(e){
+            e.preventDefault();
+            var newtask = input.value;      
+            var newli = document.createElement('li');
+            var textT = document.createElement('span');
+            textT.innerText = newtask;
+            newli.appendChild(textT);
+            newli.appendChild(addBtn('i', ['far', 'fa-trash-alt']));
+            newli.appendChild(addBtn('i', ['fas', 'fa-pencil-alt']));
+           
+            newli.appendChild(addBtn('i', ['far', 'fa-save', 'none']));
+
+            list.appendChild(newli);
+
+            input.value = '';
+        }
+
+
+
+
+        function addBtn(tag, classlist){
+            var elem = document.createElement(tag);
+            for(var i = 0; i < classlist.length; i++){
+                elem.classList.add(classlist[i]);
+            }
+            return elem;
+        }
+
+        list.addEventListener('click', function(event){
+            if(event.target.tagName === 'LI'){
+                event.target.classList.toggle('checked');
+            }
+            else if(event.target.tagName === 'I' && event.target.classList.contains('fa-trash-alt')){
+                list.removeChild(event.target.parentNode);
+            }
+            else if(event.target.tagName === 'I' && event.target.classList.contains('fa-pencil-alt')){
+                editToDo(event.target.parentNode);
+            }
+            else if(event.target.tagName === 'I' && event.target.classList.contains('fa-save')){
+                finishEdit(event.target.parentNode);
+            }
+        });
+
+        list.addEventListener('keyup', function(event){
+            if (event.keyCode == '13') {
+                    
+                       finishEdit(event.target.parentNode);
+
+                }
+            });
+
+        function editToDo(todo){
+
+             var btnedit = todo.getElementsByClassName('fa-pencil-alt')[0];
+            btnedit.classList.add('none');
+
+            var btnsave = todo.getElementsByClassName('fa-save')[0];
+            btnsave.classList.remove('none');
+
+            var currentVal = todo.innerText;
+            var span = todo.getElementsByTagName('span')[0];
+            span.remove();
+             var inputE = document.createElement('input');
+             inputE.value = currentVal;
+             inputE.classList.add('text');
+              todo.appendChild(inputE);
+             
+            
+            
+ }
+
+
+       function finishEdit(el){
+
+            
+            var btnedit = el.getElementsByClassName('fa-pencil-alt')[0];
+            btnedit.classList.remove('none');
+
+            var inp = el.getElementsByTagName('input')[0];
+            var newtask = inp.value;     
+            var textT = document.createElement('span'); 
+            textT.innerText = newtask;
+            
+            inp.remove(); 
+
+            var btnsave = el.getElementsByClassName('fa-save')[0];
+            btnsave.classList.add('none');
+
+            el.appendChild(textT);  
+           
+        }
+</script>
+
+</body>
+</html>
+			
