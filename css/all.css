@@ -189,8 +189,7 @@ input:focus::-webkit-input-placeholder{color:#bebebe;}
 
      }
      .none{
-     	/*visibility: hidden;*/
-     	/*display: none !important;*/
+    
      	display: none;
      }
 
